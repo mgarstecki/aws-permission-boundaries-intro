@@ -5,7 +5,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_policy" "permission_boundary_for_delegated_user" {
-  name = "permission_boundary_for_delegated_user"
+  name = "permission_boundary_for_demo_delegated_user"
 
   policy = <<EOF
 {
@@ -21,7 +21,6 @@ resource "aws_iam_policy" "permission_boundary_for_delegated_user" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_user" "delegated_user" {
@@ -40,7 +39,7 @@ resource "aws_iam_user_policy" "permissions_for_delegated_user" {
       {
         "Action": [
           "dynamodb:*",
-          "lambda:*"
+          "ec2:*"
         ],
         "Effect": "Allow",
         "Resource": "*"
