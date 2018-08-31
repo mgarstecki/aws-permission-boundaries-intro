@@ -1,9 +1,11 @@
 provider "aws" {
   version = "~> 1.32.0"
+  access_key = "put the access key of 'demo_delegated_user' here"
+  secret_key = "put the secret key of 'demo_delegated_user' here"
 }
 
 resource "aws_dynamodb_table" "app1_dynamodb_table" {
-  name           = "app1_storage"
+  name           = "app1_table"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "Id"
