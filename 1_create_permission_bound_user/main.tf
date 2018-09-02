@@ -22,7 +22,8 @@ EOF
 }
 
 resource "aws_iam_user" "delegated_user" {
-  name = "demo_delegated_user"
+  name          = "demo_delegated_user"
+  force_destroy = true
 }
 
 data "aws_caller_identity" "current" {}
@@ -39,7 +40,14 @@ resource "aws_iam_user_policy" "permissions_for_delegated_user" {
       {
         "Action": [
           "dynamodb:*",
-          "ec2:*"
+          "ec2:*",
+          
+          "iam:CreateInstanceProfile",
+          "iam:DeleteInstanceProfile",
+          "iam:GetInstanceProfile",
+          "iam:AddRoleToInstanceProfile",
+          "iam:RemoveRoleFromInstanceProfile",
+          "iam:ListInstanceProfilesForRole"
         ],
         "Effect": "Allow",
         "Resource": "*"
@@ -48,7 +56,6 @@ resource "aws_iam_user_policy" "permissions_for_delegated_user" {
         "Effect": "Allow",
         "Action": [
             "iam:CreateRole",
-            "iam:DeleteRole",
             "iam:PutRolePolicy",
             "iam:DeleteRolePolicy"
         ],
@@ -62,6 +69,9 @@ resource "aws_iam_user_policy" "permissions_for_delegated_user" {
       },
       {
         "Action": [
+          "iam:GetRole",
+          "iam:DeleteRole",
+          "iam:GetRolePolicy",
           "iam:PassRole"
         ],
         "Effect": "Allow",
