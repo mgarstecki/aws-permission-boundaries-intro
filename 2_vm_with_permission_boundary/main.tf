@@ -60,8 +60,7 @@ resource "aws_iam_role_policy" "delegated_vm_role_policy" {
   "Statement": [
     {
       "Action": [
-        "dynamodb:*",
-        "s3:*"
+        "dynamodb:*"
       ],
 
       "Resource": "${aws_dynamodb_table.app1_dynamodb_table.arn}",
