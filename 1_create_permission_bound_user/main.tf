@@ -1,5 +1,5 @@
 provider "aws" {
-  version = "~> 1.32.0"
+  version = "~> 1.36.0"
 }
 
 resource "aws_iam_policy" "permission_boundary_for_delegated_user" {
@@ -41,7 +41,7 @@ resource "aws_iam_user_policy" "permissions_for_delegated_user" {
         "Action": [
           "dynamodb:*",
           "ec2:*",
-          
+
           "iam:CreateInstanceProfile",
           "iam:DeleteInstanceProfile",
           "iam:GetInstanceProfile",

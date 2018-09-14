@@ -1,5 +1,5 @@
 provider "aws" {
-  version = "~> 1.32.0"
+  version = "~> 1.36.0"
   access_key = "put the access key of 'demo_delegated_user' here"
   secret_key = "put the secret key of 'demo_delegated_user' here"
 }
